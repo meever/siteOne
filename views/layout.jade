@@ -1,7 +1,43 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    //A Trading Monitoring Website
+
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //
+       Bootstrap CSS 
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
+    script(type='text/javascript', src='/javascripts/jquery.js')
+    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
   body
+    //
+       Navigation Bar 
+    .bodykinda
+      .navbar.navbar-default
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          ul.nav.navbar-nav.navbar-right
+            li.active
+              a(href='home') Home
+            li
+              a(href='VIXstrategy') VIX Strategy
+            li
+              a(href='HiBetaLoVol') High Beta Low Vol
+            li
+              a(href='Combo') Combo Strategy
+            li
+              a(href='about') About
+      //
+         Navigation Bar 
+    
+    block ribbon
+     
     block content
+     
+  p
+    .navbar-fixed-bottom(href='#')
+      |This is a trading information website that periodically updates trade information and recommendations. For personal entertainment only. Copyright (c) Minfeng Zhu 

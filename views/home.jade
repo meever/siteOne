@@ -1,54 +1,29 @@
-doctype html
-html
-  head
-    title Sity Router Hub - A funny site
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    //
-       Bootstrap CSS 
-    link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
-    script(type='text/javascript', src='/javascripts/jquery.js')
-    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
-  body
-    //
-       Navigation Bar 
-    .bodykinda
-      .navbar.navbar-default
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#')
-            | Sity Router Hub - A funny site- stories in this site not directly related to any person on the earth or on other planets
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          ul.nav.navbar-nav.navbar-right
-            li.active
-              a(href='#') Home
-            li
-              a(href='about') About
-      //
-         Navigation Bar 
-    .jumbotron
-      h1 City Router Hub
+extends layout
+block ribbon
+  .jumbotron
+    h2 Welcome to My Trading Room!
       p
-        | Do you wanna get connected to internet securely on the go for no money..?, meaning always connected, even if you don't have any device...?, and wondering if this is ever possible. Well you are not alone, you are on the right spot.
+        | give it a try...
       p
-        a.btn.btn-primary.btn-lg(href='about') Learn More
-    .col-lg-4
+        a.btn.btn-primary.btn-sm(href='about') Learn More
+        
+block content
+
+  .col-lg-4
+    .panel.panel-default
+      .panel-heading
+        h4 Historical Performance 
+      .panel-body
+        | shows historical performance here. Under construction
+  .col-lg-4
       .panel.panel-default
         .panel-heading
-          h4  Join us. 
+          h4 Current
         .panel-body
-          | Today if you make a choice,  you are going to get ever connected to internet all the time through out your life, even if you go to villages, subways, paths, metros, bus, Gym, anywhere it follows. Guys isn't that exciting?, do you wanna know how, take a minute and click on above Learn More link.
-    .col-lg-4
+          | Shows current status of market. Under construction
+  .col-lg-4
       .panel.panel-default
         .panel-heading
-          h4 Always Connected.
+          h4 Trade Recommendation
         .panel-body
-          | You are absolutely free of money, credit cards, debit cards, paypal, coupon cards what so ever. This service is amazingly free and free only for you, if you register today. Do you know how many people out there paying lot of money but not getting exciting service, they always had problems with speed, connectivity.
-    .col-lg-4
-      .panel.panel-default
-        .panel-heading
-          h4 Who are we? 
-        .panel-body
-          | We are top 10 listed Unfortune 500 companies, always wanted to give people service with no money. There are similar services who can offer like free wifis, metro wifi. Well their reach is limited. We are unlimited. Anywhere you go, our services will follow. We are on different world and different platforms, nobody can match us.
+          | Under construction

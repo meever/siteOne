@@ -9,7 +9,6 @@ var _ = require('underscore')
 var opts = { cwd: './/Rscript//',   
              env: process.env
            }
-var retData=[]
 
 
 function setup_R_job(args,done){
@@ -26,9 +25,9 @@ function setup_R_job(args,done){
         	fs.readFile(file,'utf8', function (err, data) {
         		  if (err) {
         			    console.log('json reading Error: ' + err);
-        		   }        			 
-        		  retData[opts.Index] = JSON.parse(data);
-        		  console.log(retData[opts.Index])
+        		   }   
+        		  opts.callback(JSON.parse(data))
+        		  console.log(data)
         	});
             done()
         }
@@ -40,21 +39,17 @@ function setup_R_job(args,done){
 var queue = async.queue
 
 
-exports.call=function(Rcalls, jobs){
+exports.call=function(Rcalls, jobs, callback){
 	console.log('r called with...'+Rcalls)
-	retData.length=jobs
 	var basin_queue=queue(setup_R_job, jobs)
 	var d=new Date()
 	_.each(Rcalls,
 			function(rcall, i){	
 				        var o = _.clone(opts,true);
 				        o.outputName= rcall[2].slice(0,-2)+d.toDateString()
-				        o.index=i
-				        console.log(o.outputName+'\t'+o.index)
+				        o.callback=callback
+				        console.log(o.outputName)
 				        var args={opts:o, rcall:rcall};
 				        basin_queue.push(args);
 	}) 
-	return retData
 }
-
-//exports.data=retData

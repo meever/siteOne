@@ -5,7 +5,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var home = require('./routes/home');
+var index = require('./routes/index');
 var about = require('./routes/about');
 var strategy = require('./routes/strategy');
 var app = express();
@@ -22,10 +22,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
-app.get('/', home.home);
-app.get('/home', home.home);
-app.get('\/strategy\*', strategy.index);
-app.get('/about', about.about);
+app.get('/', index.index);
+app.get('\/strategy\/*', strategy.strategy);
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

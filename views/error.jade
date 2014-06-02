@@ -1,6 +1,12 @@
 extends layout
 
-block content
+block Live
+  h1= message
+  h2= error.status
+  pre #{error.stack}
+ 
+ 
+ block Historical
   h1= message
   h2= error.status
   pre #{error.stack}

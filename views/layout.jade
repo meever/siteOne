@@ -1,43 +1,271 @@
 doctype html
 html
   head
-    //A Trading Monitoring Website
-
+    meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title A simple trading website
     //
-       Bootstrap CSS 
-    link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
-    script(type='text/javascript', src='/javascripts/jquery.js')
-    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+       Core CSS - Include with every page 
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/font-awesome/css/font-awesome.css', rel='stylesheet')
+    //
+       Page-Level Plugin CSS - Dashboard 
+    link(href='/css/plugins/morris/morris-0.4.3.min.css', rel='stylesheet')
+    link(href='/css/plugins/timeline/timeline.css', rel='stylesheet')
+    //
+       SB Admin CSS - Include with every page 
+    link(href='/css/sb-admin.css', rel='stylesheet')
   body
-    //
-       Navigation Bar 
-    .bodykinda
-      .navbar.navbar-default
+    #wrapper
+      nav.navbar.navbar-default.navbar-fixed-top(role='navigation', style='margin-bottom: 0;')
         .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-collapse')
+            span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          ul.nav.navbar-nav.navbar-right
-            li.active
-              a(href='/home') Home
-            li
-              a(href='/strategy/VIX') VIX Strategy
-            li
-              a(href='/strategy/HiBetaLoVol') High Beta Low Vol
-            li
-              a(href='/strategy/Combo') Combo Strategy
-            li
-              a(href='/about') About
+          a.navbar-brand(href='/')
+            strong Beyond Trend
+        //
+           /.navbar-header 
+        ul.nav.navbar-top-links.navbar-right
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='/err')
+              i.fa.fa-usd.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-users
+              li
+                a#VIX(href='javascript:void(0)')
+                  div
+                    strong VIX Hedging
+              li.divider
+              li
+                a#HiLo(href='javascript:void(0)')
+                  div
+                    strong HiLo
+              li.divider
+              li
+                a#Combo(href='javascript:void(0)')
+                  div
+                    strong Combo
+            //
+               /.dropdown-messages 
+          //
+             /.dropdown 
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='/err')
+              i.fa.fa-bell.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-alerts
+              li
+                a(href='/err')
+                  div
+                    i.fa.fa-comment.fa-fw
+                    | New Comment
+                    span.pull-right.text-muted.small 4 minutes ago
+              li.divider
+              li
+                a(href='/err')
+                  div
+                    i.fa.fa-twitter.fa-fw
+                    | 3 New Followers
+                    span.pull-right.text-muted.small 12 minutes ago
+              li.divider
+              li
+                a(href='/err')
+                  div
+                    i.fa.fa-envelope.fa-fw
+                    | Message Sent
+                    span.pull-right.text-muted.small 4 minutes ago
+              li.divider
+              li
+                a(href='/err')
+                  div
+                    i.fa.fa-tasks.fa-fw
+                    | New Task
+                    span.pull-right.text-muted.small 4 minutes ago
+              li.divider
+              li
+                a(href='/err')
+                  div
+                    i.fa.fa-upload.fa-fw
+                    | Server Rebooted
+                    span.pull-right.text-muted.small 4 minutes ago
+              li.divider
+              li
+                a.text-center(href='/err')
+                  strong See All Alerts
+                  i.fa.fa-angle-right
+            //
+               /.dropdown-alerts 
+          //
+             /.dropdown 
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='/err')
+              i.fa.fa-user.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li
+                a(href='/err')
+                  i.fa.fa-user.fa-fw
+                  | User Profile
+              li
+                a(href='/err')
+                  i.fa.fa-gear.fa-fw
+                  | Settings
+              li.divider
+              li
+                a(href='login.html')
+                  i.fa.fa-sign-out.fa-fw
+                  | Logout
+            //
+               /.dropdown-user 
+          //
+             /.dropdown          
+        //
+           /.navbar-top-links 
+      #page-wrapper        
+        .row
+          .col-lg-8
+            .panel.panel-default
+              .panel-heading
+                i.fa.fa-bar-chart-o.fa-fw
+                | Live Recommendation
+                .pull-right
+                  .btn-group
+                    button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown')
+                      | Actions
+                      span.caret
+                    ul.dropdown-menu.pull-right(role='menu')
+                      li
+                        a#liveUpdate(href='javascript:void(0)') Update
+                      li
+                        a(href='/err') Save
+                      li
+                        a(href='/err') Trade
+                      li.divider
+                      li
+                        a(href='/err') Diagnotics
+              //
+                 /.panel-heading 
+              .panel-body
+                block Live
+              //
+                 /.panel-body 
+            //
+               /.panel 
+            .panel.panel-default
+              .panel-heading
+                i.fa.fa-bar-chart-o.fa-fw
+                | Historical Performance
+                .pull-right
+                  .btn-group
+                    button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown')
+                      | Actions
+                      span.caret
+                    ul.dropdown-menu.pull-right(role='menu')
+                      li
+                        a#historyUpdate(href='javascript:void(0)') Update
+                      li
+                        a(href='/err') Save
+                      li
+                        a(href='/err') Trade
+                      li.divider
+                      li
+                        a(href='/err') Diagnotics
+              //
+                 /.panel-heading 
+              .panel-body
+                block Historical
+                //#morris-area-chart
+              //
+                 /.panel-body 
+            //
+               /.panel 
+          //
+             /.col-lg-8 
+          .col-lg-4
+            .panel.panel-default
+              .panel-heading
+                i.fa.fa-bell.fa-fw
+                | Notifications
+              //
+                 /.panel-heading 
+              .panel-body
+                .list-group
+                  a.list-group-item(href='/err')
+                    i.fa.fa-comment.fa-fw
+                    | New Comment
+                    span.pull-right.text-muted.small
+                      em 4 minutes ago                  
+                //
+                   /.list-group 
+                a.btn.btn-default.btn-block(href='/err') View All Alerts
+              //
+                 /.panel-body 
+            //
+               /.panel               
+            .panel.panel-default
+              .panel-heading
+                i.fa.fa-tasks.fa-fw
+                | Task Progress
+              //
+                 /.panel-heading 
+              .panel-body
+                ul.list-unstyled
+                  li
+                    div
+                      p
+                        strong Back Testing
+                        span.pull-right.text-muted 40% Complete
+                      .progress.progress-striped.active
+                        .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='40', aria-valuemin='0', aria-valuemax='100', style='width: 40%;')
+                          span.sr-only 40% Complete (success)
+                  li.divider
+                  li
+                    div
+                      p
+                        strong Live Update
+                        span.pull-right.text-muted 20% Complete
+                      .progress.progress-striped.active
+                        .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='20', aria-valuemin='0', aria-valuemax='100', style='width: 20%;')
+                          span.sr-only 20% Complete
+                  li.divider
+                  li
+                    div
+                      p
+                        strong Diagnostics
+                        span.pull-right.text-muted 60% Complete
+                      .progress.progress-striped.active
+                        .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
+                          span.sr-only 60% Complete (warning)
+              // 
+                /.panel-body 
+            //
+              /.panel
+           //            
+             /.col-lg-4 
+        //
+           /.row 
       //
-         Navigation Bar 
-    
-    block ribbon
-     
-    block content
-     
-  p
-    .navbar-fixed-bottom(href='#')
-      |For personal entertainment only. Powered by Node, Express, Bootstrap, and R. Copyright (c) Minfeng Zhu 
+         /#page-wrapper 
+    //
+       /#wrapper 
+    //
+       Core Scripts - Include with every page 
+    //script(src='/js/jquery-1.10.2.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
+    script(src='/js/plugins/metisMenu/jquery.metisMenu.js')
+    script(src='/js/plugins/bootstrapgrowl/jquery.bootstrap-growl.min.js')
+    //
+       Page-Level Plugin Scripts - Dashboard 
+    script(src='/js/plugins/morris/raphael-2.1.0.min.js')
+    script(src='/js/plugins/morris/morris.js')
+    //
+       SB Admin Scripts - Include with every page 
+    script(src='/js/sb-admin.js')
+    //
+       Page-Level Demo Scripts - Dashboard - Use for reference 
+   // script(src='/js/demo/dashboard-demo.js')
+    script(src='/js/util/mainUtil.js')       

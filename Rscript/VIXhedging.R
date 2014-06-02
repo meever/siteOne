@@ -15,7 +15,7 @@ preJSON <-function(tmp){
 }
 
 if (args[2] == 'history') {
-  param  <- list(StartDate ="2010-06-01",freq="d",
+  param  <- list(StartDate ="2013-06-01",freq="d",
                  tickers =c("SPY","^VIX","VXX","XIV"),
                  EndDate=format(Sys.time() , "%Y-%m-%d"))
   attach.all(param,T)
